@@ -2,7 +2,7 @@ namespace UnitTest
 {
     public class UnitTest1
     {
-        QuickFind
+        //Make Quickfind in here
 
         [Theory]
         [InlineData(5, 1)]
