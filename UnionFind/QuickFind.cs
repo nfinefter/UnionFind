@@ -11,9 +11,16 @@ namespace UnionFind
         private int[] sets;
         private Dictionary<T, int> map;
 
-        public QuickFind(IEnumerable<T> items)
+        public QuickFind(List<T> items)
         {
+            sets = new int[items.Count];
+            map = new Dictionary<T, int>(items.Count);
 
+            for (int i = 0; i < sets.Length; i++)
+            {
+                map.Add(items[i], i);
+                sets[i] = i;
+            }
         }
 
         public int Find(T p) => sets[map[p]];
@@ -22,7 +29,16 @@ namespace UnionFind
         {
             if (AreConnected(p, q)) return false;
 
-            sets[map[q]] = sets[map[p]];
+            int pSet = Find(p);
+            int qSet = Find(q);
+
+            for (int i = 0; i < sets.Length; i++)
+            {
+                if (sets[i] == pSet)
+                {
+                    sets[i] = qSet;
+                }
+            }
 
             return true;
         }
