@@ -42,6 +42,7 @@ namespace UnionFind
 
             return true;
         }
+
         public bool AreConnected(T p, T q)
         {
             if (Find(p).Equals(Find(q))) return true;

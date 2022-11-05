@@ -13,15 +13,6 @@ namespace UnitTest
 
         [Theory]
         [InlineData(5, 1)]
-        public void AreConnected(int p, int q)
-        {
-            bool isConnect = quickFind.AreConnected(p, q);
-
-            Assert.True(isConnect == true);
-        }
-
-        [Theory]
-        [InlineData(5, 1)]
         public void Union(int p, int q)
         {
             bool isUnion = quickFind.Union(p, q);
@@ -31,11 +22,12 @@ namespace UnitTest
 
         [Theory]
         [InlineData(5, 1)]
-        public void AreConnected1(int p, int q)
+        public void AreConnected(int p, int q)
         {
-            bool isConnect = quickUnion.AreConnected(p, q);
+            quickFind.Union(p, q);
+            bool isConnect = quickFind.AreConnected(p, q);
 
-            Assert.True(isConnect == true);
+            Assert.True(isConnect);
         }
 
         [Theory]
@@ -46,5 +38,17 @@ namespace UnitTest
 
             Assert.True(isUnion == true);
         }
+
+        [Theory]
+        [InlineData(5, 1)]
+        public void AreConnected1(int p, int q)
+        {
+            quickUnion.Union(p, q);
+            bool isConnect = quickUnion.AreConnected(p, q);
+
+            Assert.True(isConnect);
+        }
+
+      
     }
 }

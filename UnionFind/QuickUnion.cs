@@ -32,7 +32,7 @@ namespace UnionFind
                 i = sets[i];
             }
 
-            return i; ;
+            return i;
         }
         public bool Union(T p, T q)
         {
